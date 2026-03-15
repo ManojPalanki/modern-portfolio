@@ -15,8 +15,11 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Manoj | Web Developer & Digital Creator",
+  title: "Manoj Palanki | Frontend Developer",
   description: "I build modern, responsive websites that help people showcase their work and grow their careers.",
+  icons: {
+    icon: "/favicon-mp.svg",
+  },
 };
 
 export default function RootLayout({

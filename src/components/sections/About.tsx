@@ -3,9 +3,15 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+const stats = [
+  { value: "10+", label: "Projects\nCompleted"   },
+  { value: "5+",  label: "Clients\nWorked With" },
+  { value: "3+",  label: "Years\nLearning"      },
+];
+
 export const About = () => {
   return (
-    <section id="about" className="py-24 bg-dynamic">
+    <section id="about" className="py-28 bg-dynamic">
       <div className="container mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-16 items-center">
         {/* Profile Image */}
         <motion.div
@@ -37,8 +43,8 @@ export const About = () => {
             transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
             className="absolute -bottom-4 -right-4 md:-right-6 z-20 bg-card-dynamic border border-dynamic rounded-2xl px-5 py-3 shadow-xl"
           >
-            <p className="text-primary font-bold text-xl font-poppins">3+</p>
-            <p className="text-dyn-2 text-xs font-medium">Years Learning</p>
+            <p className="text-primary font-bold text-xl font-poppins leading-none">3+</p>
+            <p className="text-dyn-2 text-xs font-medium mt-0.5">Years Learning</p>
           </motion.div>
         </motion.div>
 
@@ -49,32 +55,37 @@ export const About = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
+          <span className="section-label">About Me</span>
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-dyn-1 mb-6">
-            About Me
+            Crafting Digital Experiences
           </h2>
           <div className="space-y-4 text-dyn-2 leading-relaxed text-base md:text-lg mb-10">
             <p>
-              I&apos;m a passionate web developer focused on creating clean, modern,
-              and high-performance websites.
+              I&apos;m a frontend developer passionate about building clean, modern
+              and responsive websites.
             </p>
             <p>
               I enjoy transforming ideas into real digital experiences that help
               people build their personal brand online.
             </p>
+            <p>
+              My focus is on performance, clean UI design, and user-friendly
+              experiences.
+            </p>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-4 border-t border-dynamic pt-8">
-            {[
-              { value: "10+", label: "Projects\nCompleted"   },
-              { value: "5+",  label: "Clients\nWorked With" },
-              { value: "3+",  label: "Years\nLearning"      },
-            ].map(({ value, label }) => (
-              <div key={label}>
-                <h3 className="text-3xl md:text-4xl font-bold text-primary font-poppins mb-1">
+            {stats.map(({ value, label }) => (
+              <div
+                key={label}
+                className="bg-card-dynamic rounded-2xl p-5 border border-dynamic shadow-sm
+                  hover:border-primary/30 hover:shadow-primary/10 hover:shadow-lg transition-all duration-300"
+              >
+                <h3 className="text-3xl md:text-4xl font-bold text-primary font-poppins mb-1 leading-none">
                   {value}
                 </h3>
-                <p className="text-dyn-2 font-medium uppercase text-xs md:text-sm whitespace-pre-line">
+                <p className="text-dyn-2 font-medium text-xs md:text-sm whitespace-pre-line leading-tight mt-1">
                   {label}
                 </p>
               </div>

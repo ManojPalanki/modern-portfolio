@@ -15,11 +15,31 @@ const navLinks = [
 ];
 
 export const Navbar = () => {
-  const [isOpen, setIsOpen]     = useState(false);
-  const [mounted, setMounted]   = useState(false);
-  const { theme, setTheme }     = useTheme();
+  const [isOpen, setIsOpen]       = useState(false);
+  const [mounted, setMounted]     = useState(false);
+  const [activeSection, setActive] = useState("");
+  const { theme, setTheme }       = useTheme();
 
   useEffect(() => { setMounted(true); }, []);
+
+  /* Active section detection via IntersectionObserver */
+  useEffect(() => {
+    const ids = ["home", "about", "skills", "projects", "testimonials", "contact"];
+    const observers: IntersectionObserver[] = [];
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActive(`#${id}`); },
+        { threshold: 0.4 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
 
   const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -28,6 +48,13 @@ export const Navbar = () => {
   };
 
   const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
+
+  const linkClass = (href: string) =>
+    `text-sm font-medium transition-colors duration-200 whitespace-nowrap relative group ${
+      activeSection === href
+        ? "text-primary"
+        : "text-dyn-2 hover:text-primary"
+    }`;
 
   return (
     <>
@@ -47,7 +74,7 @@ export const Navbar = () => {
           <a
             href="#home"
             onClick={(e) => scrollTo(e, "#home")}
-            className="text-xl font-bold font-poppins text-primary tracking-tight shrink-0"
+            className="text-xl font-bold font-poppins text-primary tracking-tight shrink-0 hover:opacity-80 transition-opacity"
           >
             MP.
           </a>
@@ -59,9 +86,16 @@ export const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => scrollTo(e, link.href)}
-                className="text-sm font-medium text-dyn-2 hover:text-primary transition-colors duration-200 whitespace-nowrap"
+                className={linkClass(link.href)}
               >
                 {link.name}
+                {/* Active indicator dot */}
+                {activeSection === link.href && (
+                  <motion.span
+                    layoutId="nav-dot"
+                    className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full"
+                  />
+                )}
               </a>
             ))}
           </div>
@@ -138,7 +172,9 @@ export const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => scrollTo(e, link.href)}
-                  className="text-lg font-medium text-dyn-1 hover:text-primary transition-colors"
+                  className={`text-lg font-medium transition-colors ${
+                    activeSection === link.href ? "text-primary" : "text-dyn-1 hover:text-primary"
+                  }`}
                 >
                   {link.name}
                 </a>

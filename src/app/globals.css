@@ -16,6 +16,9 @@
   --text-2: #475569;
   --border: rgba(15, 23, 42, 0.1);
   --nav-bg: rgba(248, 250, 252, 0.85);
+  --glow-primary: rgba(37, 99, 235, 0.15);
+  --glow-secondary: rgba(124, 58, 237, 0.15);
+  --section-stripe: rgba(15, 23, 42, 0.02);
 }
 
 /* ── Dark theme ── */
@@ -26,15 +29,27 @@
   --text-2: #94A3B8;
   --border: rgba(148, 163, 184, 0.15);
   --nav-bg: rgba(15, 23, 42, 0.85);
+  --glow-primary: rgba(37, 99, 235, 0.2);
+  --glow-secondary: rgba(124, 58, 237, 0.2);
+  --section-stripe: rgba(255, 255, 255, 0.02);
 }
 
 @layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
   body {
     background-color: var(--bg);
     color: var(--text-1);
     font-family: var(--font-inter);
     scroll-behavior: smooth;
     transition: background-color 0.35s ease, color 0.35s ease;
+  }
+
+  ::selection {
+    background-color: rgba(37, 99, 235, 0.3);
+    color: #fff;
   }
 }
 
@@ -45,3 +60,70 @@
 .text-dyn-2         { color: var(--text-2); transition: color 0.35s ease; }
 .border-dynamic     { border-color: var(--border); }
 .nav-bg             { background-color: var(--nav-bg); }
+
+/* ── Section heading accent line ── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+  border-radius: 999px;
+}
+
+/* ── Card glow utilities ── */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px var(--glow-primary);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* ── Glow button ── */
+.btn-glow:hover {
+  box-shadow: 0 0 24px var(--glow-primary), 0 0 48px var(--glow-secondary);
+}
+
+/* ── Gradient text utility ── */
+.gradient-text {
+  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 50%, #38BDF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Active nav link ── */
+.nav-link-active {
+  color: var(--color-primary) !important;
+}
+
+/* ── Smooth scrollbar ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Custom scrollbar (webkit) ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 999px;
+}
