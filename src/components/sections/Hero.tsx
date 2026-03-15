@@ -51,8 +51,8 @@ export const Hero = () => {
             variants={itemVariants}
             className="text-base md:text-lg text-dyn-2 max-w-lg leading-relaxed"
           >
-            I build modern, responsive websites that help students and
-            professionals showcase their skills and stand out online.
+            Building modern and high-performance websites that help students
+            and professionals showcase their skills online.
           </motion.p>
 
           {/* Buttons */}

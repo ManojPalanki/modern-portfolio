@@ -66,10 +66,10 @@ export const About = () => {
             </p>
             <p>
               I enjoy transforming ideas into real digital experiences that help
-              people build their personal brand online.
+              students and professionals create a strong digital presence online.
             </p>
             <p>
-              My focus is on performance, clean UI design, and user-friendly
+              My focus is on performance, modern UI design, and user-friendly
               experiences.
             </p>
           </div>

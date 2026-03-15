@@ -74,7 +74,7 @@ export const Skills = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
-                className="grid grid-cols-2 md:grid-cols-4 gap-5"
+                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"
               >
                 {cat.skills.map((skill, index) => (
                   <motion.div
