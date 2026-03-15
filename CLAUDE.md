@@ -372,3 +372,46 @@ Edit `src/app/globals.css` under `@theme {}`:
 - Social icons now use **circular button style** (`w-10 h-10` bordered rounded-full) with hover lift
 - Footer no longer has `mt-20` (sections handle their own bottom padding)
 
+---
+
+### Version 3 — Color System Refresh & Copy Refinements (March 2026)
+
+#### `globals.css`
+- **Dark background deepened:** `#0F172A` → `#0B1120` (richer, more premium dark)
+- **Primary accent shifted:** `#2563EB` → `#3B82F6` (brighter blue, better contrast)
+- **Secondary accent shifted:** `#7C3AED` → `#8B5CF6` (brighter violet)
+- **Nav-bg updated:** `rgba(15, 23, 42, 0.85)` → `rgba(11, 17, 32, 0.85)` (matches new bg)
+- **Border opacity reduced:** `0.15` → `0.12` (slightly subtler on dark bg)
+- **Glow values updated** to match new primary/secondary RGB:
+  - `--glow-primary`: `rgba(59, 130, 246, 0.22)`
+  - `--glow-secondary`: `rgba(139, 92, 246, 0.22)`
+- **`::selection` color updated** to `rgba(59, 130, 246, 0.3)`
+- **`.card-hover` border color updated** to `rgba(59, 130, 246, 0.3)`
+- **`.gradient-text` updated:** `#2563EB → #7C3AED → #38BDF8` → `#3B82F6 → #8B5CF6 → #38BDF8`
+
+#### `Hero.tsx`
+- **Subheadline updated** to: *"Building modern and high-performance websites that help students and professionals showcase their skills online."*
+
+#### `About.tsx`
+- **Paragraph 2 updated** to: *"…help students and professionals create a strong digital presence online."*
+- **Paragraph 3 updated to:** *"My focus is on performance, modern UI design, and user-friendly experiences."*
+
+#### `Skills.tsx`
+- **Grid breakpoints updated:** `grid-cols-2 md:grid-cols-4` → `grid-cols-2 md:grid-cols-3 lg:grid-cols-4`
+  - Mobile: 2 columns ✓
+  - Tablet (md): 3 columns ✓ *(new)*
+  - Desktop (lg): 4 columns ✓
+
+---
+
+#### Current Color Tokens (v3)
+
+| Token | Dark Value | Light Value |
+|---|---|---|
+| `--bg` | `#0B1120` | `#F8FAFC` |
+| `--card-bg` | `#111827` | `#FFFFFF` |
+| `--color-primary` | `#3B82F6` | same |
+| `--color-secondary` | `#8B5CF6` | same |
+| `--color-hover` | `#38BDF8` | same |
+| `--text-1` | `#F8FAFC` | `#0F172A` |
+| `--text-2` | `#94A3B8` | `#475569` |
