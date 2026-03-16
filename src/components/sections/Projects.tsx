@@ -15,12 +15,12 @@ const projects = [
     demoLink: "https://manojpalanki.vercel.app/",
   },
   {
-    title: "Digital Marketing Agency Website",
+    title: "Praveen's Fitness Family",
     description:
-      "A full-scale digital marketing & web development agency website featuring service pages, a Book Consultation CTA, and polished corporate branding.",
-    image: "/project-agency.png",
-    tags: ["WordPress", "Digital Marketing", "SEO"],
-    demoLink: "https://syspree.com/",
+      "A 3-month body transformation specialist website featuring custom workout plans, diet coaching, and daily accountability. Built with a premium gym-inspired aesthetic.",
+    image: "/project-fitness.png",
+    tags: ["HTML", "CSS", "JavaScript"],
+    demoLink: "https://praveen-fitness-family.vercel.app/",
   },
   {
     title: "Premium Restaurant Landing Page",
